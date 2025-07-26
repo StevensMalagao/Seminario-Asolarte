@@ -1,0 +1,33 @@
+const int LED_BUILTIN_ESP32 = 2;
+
+float peso_ejemplo = 0.0;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_BUILTIN_ESP32, OUTPUT);
+}
+
+void loop() {
+  peso_ejemplo += 0.1;
+  if (peso_ejemplo > 20.0) {
+    peso_ejemplo = 0.0;
+  }
+
+  char fechaHoraBuffer[30];
+  sprintf(fechaHoraBuffer, "25/07/2025 %02d:%02d:%02d",
+          (int)(millis() / 1000 / 3600) % 24,
+          (int)(millis() / 1000 / 60) % 60,
+          (int)(millis() / 1000) % 60);
+
+  Serial.print("Fecha y hora:");
+  Serial.print(fechaHoraBuffer);
+  Serial.print(", Peso:");
+  Serial.print(peso_ejemplo, 2);
+  Serial.println();
+
+  digitalWrite(LED_BUILTIN_ESP32, HIGH);
+  delay(100);
+  digitalWrite(LED_BUILTIN_ESP32, LOW);
+
+  delay(900);
+}
