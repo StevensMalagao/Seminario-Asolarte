@@ -13,7 +13,7 @@ def agregar_datos_a_excel(nombre_archivo_excel, datos_a_agregar):
             libro = openpyxl.Workbook()
             hoja = libro.active
             hoja.title = "Datos Registrados" # Asigna un nombre a la hoja
-            hoja.append(["Fecha y Hora", "Peso", "Material", "Reciclador", "Observaciones"]) # Encabezados de columna
+            hoja.append(["Fecha", "Hora", "Peso", "Material", "Reciclador", "Observaciones"]) # Encabezados de columna
 
         # Buscar la primera fila vacía
         # openpyxl.max_row obtiene el número total de filas, incluyendo las llenas.
